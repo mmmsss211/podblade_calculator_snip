@@ -7,8 +7,334 @@
     <title>calculator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/slider.css">
+    <style>
+        
+@media (min-width: 992px) {
+  .pod_calc_main_container {
+    overflow: visible;
+    width: 350px;
+    margin: 0 auto;
+    padding: 5px;
+    top: 0;
+  }
+}
+
+.pod_calc_main_header {
+  height: 130px;
+  background-color: #ff8e01;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+.pod_calc_header_content {
+  color: #fff;
+  font-weight: 600;
+  font-size: 2em;
+  padding: 15px;
+  letter-spacing: 2px;
+}
+
+.pod_calc_main_content {
+  text-align: left;
+  display: block;
+  position: relative;
+  padding: 15px;
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.pod_calc_main_content .pod_calc_holder {
+  margin-top: 25px;
+}
+
+.pod_calc_main_content input#pod_calc_clients {
+  width: 80%;
+  height: 60px;
+  font-size: 18px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(17, 17, 17, 0.4);
+  border-radius: 6px;
+}
+
+.pod_calc_content_label {
+  font-size: 18px;
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.pod_calc_btn_container {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.pod_calc_calc_btn {
+  width: 80%;
+  height: 82px;
+  vertical-align: middle;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #ff8e01;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ff8e01;
+  font-size: 24px;
+  text-align: center;
+}
+
+.pod_calc_close_btn {
+  width: 60%;
+  border-style: none;
+  vertical-align: middle;
+  text-align: center;
+  color: rgb(80, 78, 78);
+  font-weight: 400;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: transparent;
+}
+
+.pod_calc_popup_container {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.pod_calc_popup_email {
+  visibility: hidden;
+  position: absolute;
+  display: block;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  width: 325px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.pod_calc_popup_email_header {
+  height: 35px;
+  background-color: #ff8e01;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.pod_calc_popup_email_content {
+  position: relative;
+  display: block;
+  background-color: #fff;
+  padding: 5px 15px 0px 15px;
+}
+
+.pod_calc_popup_email input {
+  width: 90%;
+  height: 54px;
+  padding: 15px 10px;
+  border-style: solid;
+  border-color: rgba(17, 17, 17, 0.4);
+}
+
+#pod_calc_footnote {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.pod_calc_popup_calculator {
+  visibility: hidden;
+  position: relative;
+  display: block;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 325px;
+  /* height: 320px; */
+}
+
+.pod_calc_popup_calculator_content {
+  position: relative;
+  display: block;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.pod_calc_est_income {
+  margin: auto;
+  background-color: #f59b2d;
+  height: 35%;
+  display: block;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.pod_calc_est_income p {
+  /* padding: 10px; */
+  color: #fff;
+  font-weight: 200;
+  display: block;
+  text-align: center;
+}
+
+#pod_calc_estimatedincome {
+  font-weight: 800;
+  font-size: 2.5em;
+}
+
+.pod_calc_popup_container.active {
+  visibility: visible;
+}
+
+.pod_calc_popup_email.active {
+  visibility: visible;
+}
+
+.pod_calc_popup_calculator {
+  visibility: hidden;
+  position: relative;
+}
+
+.pod_calc_popup_calculator.active {
+  visibility: visible;
+}
+
+.pod_noclients {
+  height: 60px;
+  font-size: 18px;
+}
+
+.pod_calc_price_hover {
+  color: blue;
+  cursor: pointer;
+  display: block;
+}
+
+/* .tooltiptext {
+  visibility: hidden;
+  width: 500px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 90%;
+} */
+
+.pod_calc_price_hover:hover {
+  position: relative;
+}
+
+.pod_calc_price_hover:hover:after {
+  content: url(../podblade_packages.png);
+  width: 350px;
+  height: 200px;
+  display: block;
+  position: absolute;
+  z-index: 1;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 20px 0;
+  width: 100%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #ff8e01;
+  border-radius: 25px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0,0,0, 1);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ff8e01;
+}
+
+.pod_calc_range_wrap {
+  position: relative;
+  margin-top: 40px;
+  border-style: none;
+}
+
+.pod_calc_range_value {
+  position: absolute;
+  top: -50%;
+}
+
+.pod_calc_range_value span {
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: #ff8e01;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
+}
+
+.pod_calc_range_value span:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #ff8e01;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}
+
+
+    </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        
+    
 </head>
 
 <body>
@@ -72,10 +398,119 @@
         </div>
     </div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/slider.js"></script>
+    <script>
+        let pod_plans = [
+                { plan: 'Basic', price: 125 },
+                { plan: 'Plus', price: 195 },
+                { plan: 'Premium', price: 425 }
+            ]
+            let clients = 0;
+            let multiplier = 0;
+
+            const Url = 'https://hook.integromat.com/ipj8a7lpcjaf3kscolewtbmrm7q9xp4g'
+
+
+            function PlanAverage() {
+                let sum = pod_plans.reduce((currentTotal, plan) => {
+                    return plan.price + currentTotal
+                }, 0)
+                return sum / pod_plans.length
+            }
+
+            function Gross() {
+                let gross_income = (multiplier * PlanAverage()) * clients;
+                return gross_income;
+            }
+
+            function BasePlan() {
+                return PlanAverage() * clients
+            }
+
+            function NetIncome() {
+                return Gross() - BasePlan()
+            }
+
+            function currencyFormat(num) {
+                return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+            }
+
+            function ValidateEmail(mail) {
+                let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if (mailformat.test(mail)) {
+                    return (true)
+                }
+                else {
+                    return (false)
+                }
+            }
+
+            function getInput() {
+                clients = document.getElementById("pod_calc_clients").value;
+                multiplier = document.getElementById("pod_calc_markup").value;
+
+                $(".pod_calc_popup_container").addClass("active");
+                $(".pod_calc_popup_email").addClass("active");
+            }
+
+            $("#pod_calc_compute").on("click", function () {
+                getInput();
+            })
+
+            $("#pod_calc_close_compute").on("click", function () {
+                $(".pod_calc_popup_email").removeClass("active");
+                $(".pod_calc_popup_container").removeClass("active");
+                $(".notif").removeClass("active");
+            });
+
+            $("#pod_calc_estimate").on("click", function () {
+                let email_holder = document.getElementById("pod_calc_email").value
+                let name_holder = document.getElementById("pod_calc_fullname").value
+                if (email_holder != "") {
+                    if (ValidateEmail(email_holder)) {
+                        $(".notif").removeClass("active");
+
+                        //make the request here!
+                        const data = { email: email_holder, name: name_holder }
+                        $.post(Url, data, function (status) {
+
+                        })
+                        // document.getElementById("grossincome").innerHTML = currencyFormat(Gross());
+                        // document.getElementById("baseplan").innerHTML = currencyFormat(BasePlan());
+                        document.getElementById("pod_calc_estimatedincome").innerHTML = currencyFormat(NetIncome());
+
+                        $(".pod_calc_popup_calculator").addClass("active");
+                        $(".pod_calc_popup_email").removeClass("active");
+                    }
+                    else {
+                        document.getElementById("msg").innerHTML = "Invalid email address"
+                        $(".notif").addClass("active");
+                    }
+                }
+                else {
+                    document.getElementById("msg").innerHTML = "Email address cannot be empty"
+                    $(".notif").addClass("active");
+                }
+            })
+
+            $("#pod_calc_close_calculator").on("click", function () {
+                $(".pod_calc_popup_calculator").removeClass("active");
+                $(".pod_calc_popup_container").removeClass("active");
+            });
+
+            const
+                range = document.getElementById('pod_calc_markup'),
+                rangeV = document.getElementById('pod_calc_rangeV'),
+                setValue = () => {
+                    const
+                        newValue = Number((range.value - range.min) * 100 / (range.max - range.min)),
+                        newPosition = 10 - (newValue * 0.2);
+                    rangeV.innerHTML = `<span>${range.value}x</span>`;
+                    rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+                };
+            document.addEventListener("DOMContentLoaded", setValue);
+            range.addEventListener('input', setValue);
+    </script>
+    <!-- <script src="assets/js/slider.js"></script> -->
 </body>
 
 </html>
